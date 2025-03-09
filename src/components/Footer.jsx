@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import fsclogo from "/fcs_logo.png"
 const Footer = () => {
   const [scale, setScale] = useState(1); // State to manage the scale of the dot
 
@@ -67,6 +67,15 @@ const Footer = () => {
           <button className="mt-4 md:mt-10 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md">
             Send ➜
           </button>
+        </div>
+        <div
+          className="hidden md:block w-15 h-auto mx-auto"
+          style={{
+            transform: `scale(${scale})`,
+            transition: "transform 0.2s ease-out",
+          }}
+        >
+          <img src={fsclogo} alt="FCSLogo" />
         </div>
       </div>
     </footer>
