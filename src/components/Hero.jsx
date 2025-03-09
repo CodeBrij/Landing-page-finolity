@@ -75,7 +75,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="pt-4 pb-3 border-t border-gray-200 w-[90%] m-auto"></div>
+        {/* <div className="pt-4 pb-3 border-t border-gray-200 w-[90%] m-auto"></div> */}
       </nav>
 
       <div className="pt-60 lg:px-16 px-4 pb-4 h-full flex flex-col sm:flex-row sm:items-center text-white">
@@ -142,7 +142,7 @@ const Hero = () => {
               <h2 class="xl:text-6xl md:text-4xl sm:text-2xl text-xl font-semibold">
                 98
               </h2>
-              <h2 class="text-rose-500 mt-3 xl:text-4xl md:text-3xl sm:text-2xl text-xl font-extrabold">
+              <h2 class="text-rose-500 xl:mt-3 xl:text-4xl md:text-3xl sm:text-2xl text-xl font-extrabold">
                 %
               </h2>
             </div>
@@ -155,7 +155,7 @@ const Hero = () => {
               <h2 class="xl:text-6xl md:text-4xl sm:text-2xl text-xl font-semibold">
                 470
               </h2>
-              <h2 class="text-rose-500 mt-3 xl:text-4xl md:text-3xl sm:text-2xl text-xl font-extrabold">
+              <h2 class="text-rose-500 xl:mt-3 xl:text-4xl md:text-3xl sm:text-2xl text-xl font-extrabold">
                 +Projects
               </h2>
             </div>
@@ -168,7 +168,7 @@ const Hero = () => {
               <h2 class="xl:text-6xl md:text-4xl sm:text-2xl text-xl font-semibold">
                 3
               </h2>
-              <h2 class="text-rose-500 mt-3 xl:text-4xl md:text-3xl sm:text-2xl text-xl font-extrabold">
+              <h2 class="text-rose-500 xl:mt-3 xl:text-4xl md:text-3xl sm:text-2xl text-xl font-extrabold">
                 Mins
               </h2>
             </div>
