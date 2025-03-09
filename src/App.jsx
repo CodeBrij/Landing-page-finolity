@@ -1,9 +1,8 @@
-import { useState } from 'react'
-import Button from '@mui/material/Button';
-import viteLogo from '/vite.svg'
 import Hero from './components/Hero';
 import About from './components/About';
 import Partners from './components/Partners';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -12,6 +11,8 @@ function App() {
       <Hero/>
       <About/>
       <Partners/>
+      <Contact/>
+      <Footer/>
     </>
   )
 }

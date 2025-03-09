@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Typed from "typed.js";
+import { motion, useInView } from "framer-motion"; // Import framer-motion for animations
 
 const services = [
   {
@@ -68,9 +69,20 @@ const About = () => {
     };
   }, []);
 
+  // Animation variants for cards
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
+
+  // Hook to detect when cards are in view
+  const cardRefs = services.map(() => useRef(null));
+  const cardInView = cardRefs.map((ref) => useInView(ref, { once: true }));
+
   return (
     <>
-    <div className="max-w-4xl mb-10 mt-10 sm:pt-20 px-10 xl:mx-25">
+      {/* Typed Section */}
+      <div className="max-w-4xl mb-10 mt-10 pt-40 sm:pt-40 px-10 xl:mx-25 relative z-10">
         <h1 className="text-4xl font-bold text-gray-900">
           <span className="text-gray-900">
             Simplifying IT for a complex world.
@@ -84,27 +96,47 @@ const About = () => {
           voluptatibus quam modi et qui explicabo, provident officia! Eveniet
           tempore eligendi dolore nesciunt! Quia, debitis?
         </p>
-    </div>
-
-    <section className="bg-gray-50 min-h-screen flex flex-col items-center justify-center px-10 py-20">
-      {/* Services Section */}
-      <div className="w-full max-w-7xl px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="text-4xl mb-4 text-[#d40000]">{service.icon}</div>
-              <h2 className="text-xl font-bold mb-2 text-gray-900">
-                {service.title}
-              </h2>
-              <p className="text-gray-600">{service.info}</p>
-            </div>
-          ))}
-        </div>
       </div>
-    </section>
+
+      {/* Services Section */}
+      <section className="bg-gray-50 min-h-screen flex flex-col items-center justify-center px-10 py-20 relative z-10">
+        <div className="w-full max-w-7xl px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                ref={cardRefs[index]}
+                variants={cardVariants}
+                initial="hidden"
+                animate={cardInView[index] ? "visible" : "hidden"}
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="text-4xl mb-4 text-[#d40000]">
+                  {service.icon}
+                </div>
+                <h2 className="text-xl font-bold mb-2 text-gray-900">
+                  {service.title}
+                </h2>
+                <p className="text-gray-600">{service.info}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CSS for Background Animation */}
+      <style>
+        {`
+          @keyframes moveBackground {
+            0% {
+              background-position: 0 0;
+            }
+            100% {
+              background-position: 100% 100%;
+            }
+          }
+        `}
+      </style>
     </>
   );
 };
