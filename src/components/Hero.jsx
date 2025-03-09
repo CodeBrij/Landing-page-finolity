@@ -145,7 +145,7 @@ const Hero = () => {
             We are
           </h1>
           <h1 className="2xl:text-8xl md:text-6xl sm:text-4xl text-3xl font-semibold font-serif">
-            Intellion
+            Intelion
           </h1>
 
           <p className="lg:w-[70%] w-full text-white text-md mt-4 md:text-lg 2xl:text-2xl">
