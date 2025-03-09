@@ -1,8 +1,22 @@
-// import { Button } from "@/components/ui/button";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 const Footer = () => {
+  const [scale, setScale] = useState(1); // State to manage the scale of the dot
+
+  // Handle scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY || window.pageYOffset;
+      const newScale = 1 + scrollPosition * 0.001; // Adjust the multiplier for sensitivity
+      setScale(newScale);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <footer className="bg-black text-white p-10">
+    <footer className="bg-black text-white p-10 relative overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-8">
         {/* Solutions Section */}
         <div>
@@ -13,7 +27,9 @@ const Footer = () => {
             <li>Cloud & Infrastructure</li>
             <li>Software-as-a-Service</li>
             <li>Digital & Brand Marketing</li>
-            <li className="text-white font-semibold">Generative AI & Business Intelligence</li>
+            <li className="text-white font-semibold">
+              Generative AI & Business Intelligence
+            </li>
             <li>Network Connectivity</li>
             <li>ERP Solutions</li>
           </ul>
@@ -45,15 +61,16 @@ const Footer = () => {
             className="w-full p-2 bg-gray-900 text-white border border-gray-700 rounded-md"
           />
           <div className="mt-2 text-sm text-gray-500 flex items-center">
-            <input type="checkbox" className="mr-2" /> I agree to the Privacy Policy
+            <input type="checkbox" className="mr-2" /> I agree to the Privacy
+            Policy
           </div>
           <button className="mt-4 md:mt-10 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md">
-          Send ➜
-        </button>
+            Send ➜
+          </button>
         </div>
-        
       </div>
     </footer>
   );
-}
+};
+
 export default Footer;
