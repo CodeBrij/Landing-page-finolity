@@ -15,10 +15,11 @@ const companies = [
 
 const customIcon = (logo) =>
   new L.Icon({
-    iconUrl: `/logos/${logo}`,
+    iconUrl: `/${logo}`,
     iconSize: [40, 40],
     iconAnchor: [20, 40],
-    popupAnchor: [0, -40]
+    popupAnchor: [0, -40],
+    iconRetinaUrl: '/default-marker.png', // Fallback icon
   });
 
 const Partners = () => {
@@ -39,7 +40,7 @@ const Partners = () => {
     <MapContainer center={[20, 0]} zoom={2} style={{ height: "500px", width: "100%" }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {companies.map((company, index) => (
-        <Marker key={index} position={company.location}>
+        <Marker key={index} position={company.location} icon={customIcon(company.logo)}>
           <Popup>
             <img src={`${company.logo}`} alt={company.name} width="100" />
             <p className="font-semibold text-center">{company.name}</p>
